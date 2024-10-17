@@ -1,0 +1,30 @@
+{
+  "dimensions": {
+    "articles": ["All Articles", "Bikes", "Motorbikes"],
+    "regions": ["Europe", "Great Britain", "Germany"],
+    "legalEntities": ["11", "12", "13"],
+    "version": ["Actual", "Budget"],
+    "currency": ["LC", "USD", "EUR"],
+    "measure": ["Units", "Unit Price", "Gross Revenue"]
+  },
+  "values": {
+    "key1": {
+      "article": "Motorbikes",
+      "region": "Germany",
+      "legalEntity": "11",
+      "version": "Actual",
+      "currency": "LC",
+      "measure": "Units",
+      "value": 276521
+    },
+    "key2": {
+      "article": "Bikes",
+      "region": "Great Britain",
+      "legalEntity": "12",
+      "version": "Budget",
+      "currency": "EUR",
+      "measure": "Gross Revenue",
+      "value": 152367
+    }
+  }
+}
