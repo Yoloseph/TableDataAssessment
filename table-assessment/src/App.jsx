@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Table from "./components/Table";
 import Filter from "./components/Filter";
@@ -7,8 +6,8 @@ import dataTable from "./mock/mockDataTable.json";
 import dataUsers from "./mock/mockDataUsers.json";
 
 function App() {
-  const [tableData, setTableData] = useState({});
-  const [userData, setUserData] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     retrieveData();
@@ -22,15 +21,28 @@ function App() {
     }
   };
 
+  const handleFilter = (data) => {
+    if(data.length >= 2){
+
+    }else{
+
+    }
+    console.log("recieved data =>", data);
+  };
+
   return (
     <div className="App">
       <h1>Table Data</h1>
-
       <p>Filtering area</p>
-      {tableData && <Filter tableInfo={tableData} />}
+      {tableData && (
+        <Filter
+          tableData={tableData}
+          handleChange={(data) => handleFilter(data)}
+        />
+      )}
       <p>Table area</p>
       {userData && tableData && (
-        <Table tableInfo={userData} headerInfo={tableData} />
+        <Table userData={userData} tableData={tableData} />
       )}
     </div>
   );

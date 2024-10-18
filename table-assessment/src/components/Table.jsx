@@ -1,11 +1,11 @@
 import { useState } from "react";
-import './Table.css';
+import "./Table.css";
 
-function Table(tableInfo) {
+function Table({ userData, tableData }) {
   const getHeaders = (data) => {
     let header = [];
-    if (data.headerInfo) {
-      Object.keys(data.headerInfo).forEach((element) => {
+    if (data) {
+      Object.keys(data).forEach((element) => {
         header.push(<th>{element}</th>);
       });
     }
@@ -15,8 +15,8 @@ function Table(tableInfo) {
   const getData = (data) => {
     let row = [];
     let level = 1;
-    if (data.tableInfo) {
-      data.tableInfo.forEach((element) => {
+    if (data) {
+      data.forEach((element) => {
         row.push(
           <tr data-row-level={level}>
             {Object.values(element).map((value, index) => (
@@ -35,9 +35,9 @@ function Table(tableInfo) {
       <h1>Table </h1>
       <table id="data-table">
         <thead>
-          <tr>{getHeaders(tableInfo)}</tr>
+          <tr>{getHeaders(tableData)}</tr>
         </thead>
-        <tbody id="table-body">{getData(tableInfo)}</tbody>
+        <tbody id="table-body">{getData(userData)}</tbody>
       </table>
     </div>
   );
