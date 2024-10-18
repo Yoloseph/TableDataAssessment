@@ -1,0 +1,30 @@
+[
+  {
+    "article": "Motorbikes",
+    "region": "Germany",
+    "legalEntity": "11",
+    "version": "Actual",
+    "currency": "LC",
+    "measure": "Units",
+    "value": 276521
+  },
+  {
+    "article": "Bikes",
+    "region": "Great Britain",
+    "legalEntity": "12",
+    "version": "Budget",
+    "currency": "EUR",
+    "measure": "Gross Revenue",
+    "value": 152367
+  }
+  ,
+  {
+    "article": "Bikes",
+    "region": "Germany",
+    "legalEntity": "13",
+    "version": "Actual",
+    "currency": "USD",
+    "measure": "Unit Price",
+    "value": 152367
+  }
+]

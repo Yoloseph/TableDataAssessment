@@ -1,42 +1,51 @@
 import { useEffect, useState } from "react";
 
-function Filter(data) {
-  //const [columnValue, setTableData] = useState([]);
+function Filter(tableInfo) {
+  const [selectedColumn, setSelectedColumn] = useState("");
 
   useEffect(() => {
-    if (data) {
-    }
   }, []);
 
   const columnDataBlock = (data) => {
     let option = [];
-    if (data) {
-      Object.keys(data.data).forEach((element) => {
-        option.push(<option value="element">{element}</option>);
+    if (data.tableInfo) {
+      Object.keys(data.tableInfo).forEach((element) => {
+        option.push(<option value={element}>{element}</option>);
       });
     }
-    return <select>{option}</select>;
+    return (
+      <select onChange={(e) => setSelectedColumn(e.target.value)}>
+        {option}
+      </select>
+    );
   };
 
   const valuesDataBlock = (data) => {
-  //ToDo 
+    let option = [];
+    if (data.tableInfo && selectedColumn) {
+      Object.keys(data.tableInfo).forEach((element) => {
+        if (selectedColumn === element) {
+          data.tableInfo[selectedColumn].forEach((element2) => {
+            option.push(<option value="element2">{element2}</option>);
+          });
+        }
+      });
+    }
+    return <select>{option}</select>;
   };
 
   return (
     <div>
       <h1>Filter </h1>
       <p>Column</p>
-      {columnDataBlock(data)}
+      {columnDataBlock(tableInfo)}
       {/* <select>
         <option value="someOption">Column option</option>
         <option value="otherOption">Other Column option</option>
       </select> */}
 
       <p>Value</p>
-      <select>
-        <option value="someOption">Value option</option>
-        <option value="otherOption">Other Value option</option>
-      </select>
+      {valuesDataBlock(tableInfo)}
     </div>
   );
 }
