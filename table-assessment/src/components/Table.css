@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.collapse-icon {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.indent {
+    padding-left: 20px;
+}
+
+.expandable {
+    padding-left: 10px;
+}
