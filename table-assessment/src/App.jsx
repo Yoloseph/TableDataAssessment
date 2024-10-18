@@ -27,9 +27,11 @@ function App() {
       <h1>Table Data</h1>
 
       <p>Filtering area</p>
-      {<Filter tableInfo={tableData} />}
+      {tableData && <Filter tableInfo={tableData} />}
       <p>Table area</p>
-      {<Table data={userData} />}
+      {userData && tableData && (
+        <Table tableInfo={userData} headerInfo={tableData} />
+      )}
     </div>
   );
 }

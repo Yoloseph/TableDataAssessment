@@ -1,62 +1,43 @@
-function Table() {
+import { useState } from "react";
+
+function Table(tableInfo) {
+  const getHeaders = (data) => {
+    let header = [];
+    if (data.headerInfo) {
+      Object.keys(data.headerInfo).forEach((element) => {
+        header.push(<th>{element}</th>);
+      });
+    }
+    return <>{header}</>;
+  };
+
+  const getData = (data) => {
+    let row = [];
+    let level = 1;
+    if (data.tableInfo) {
+      data.tableInfo.forEach((element) => {
+        row.push(
+          <tr data-row-level={level}>
+            {Object.values(element).map((value, index) => (
+              <td key={index}>{value}</td>
+            ))}
+          </tr>
+        );
+        level++;
+      });
+    }
+    return row;
+  };
+
   return (
     <div>
       <h1>Table </h1>
       <table id="data-table">
         <thead>
-            <tr>
-                <th></th>
-                <th colspan="3">Articles</th>
-                <th colspan="2">Region</th>
-                <th colspan="2">Legal Entity</th>
-                <th>Version</th>
-                <th>Currency</th>
-                <th>Measure</th>
-            </tr>
-            {/* <tr id="column-headers">
-                <th></th>
-                <th class="expandable" data-level="1"><span class="collapse-icon" onclick="toggleColumn(1)">&#9654;</span> All Articles</th>
-                <th class="hidden indent" data-level="2">Bikes</th>
-                <th class="hidden indent" data-level="2">Motorbikes</th>
-                <th class="expandable" data-level="1"><span class="collapse-icon" onclick="toggleColumn(4)">&#9654;</span> Europe</th>
-                <th class="hidden indent" data-level="2">Great Britain</th>
-                <th class="expandable" data-level="1"><span class="collapse-icon" onclick="toggleColumn(7)">&#9654;</span> All Entities</th>
-                <th class="hidden indent" data-level="2">11</th>
-                <th>Actual</th>
-                <th>LC</th>
-                <th>Units</th>
-            </tr> */}
+          <tr>{getHeaders(tableInfo)}</tr>
         </thead>
-        <tbody id="table-body">
-            <tr data-row-level="1">
-                <td class="expandable" data-level="1"><span class="collapse-icon" onclick="toggleRow(1)">&#9654;</span> Germany</td>
-                <td>276521</td>
-                <td>120000</td>
-                <td>98000</td>
-                <td>430000</td>
-                <td>310000</td>
-                <td>76000</td>
-                <td>67000</td>
-                <td>340000</td>
-                <td>250000</td>
-                <td>89000</td>
-            </tr>
-            <tr data-row-level="2" class="hidden">
-                <td class="indent">Berlin</td>
-                <td>12345</td>
-                <td>3456</td>
-                <td>5678</td>
-                <td>91011</td>
-                <td>11213</td>
-                <td>1415</td>
-                <td>1617</td>
-                <td>1819</td>
-                <td>2021</td>
-                <td>2223</td>
-            </tr>
-        </tbody>
-    </table>
-
+        <tbody id="table-body">{getData(tableInfo)}</tbody>
+      </table>
     </div>
   );
 }

@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 function Filter(tableInfo) {
   const [selectedColumn, setSelectedColumn] = useState("");
 
-  useEffect(() => {
-  }, []);
-
   const columnDataBlock = (data) => {
     let option = [];
     if (data.tableInfo) {
