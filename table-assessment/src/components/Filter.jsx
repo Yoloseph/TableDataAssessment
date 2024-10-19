@@ -55,12 +55,7 @@ function Filter({ tableData, handleChange }) {
     return selects;
   };
 
-  return (
-    <div>
-      <h1>Filter </h1>
-      {columnDataBlock(tableData)}
-    </div>
-  );
+  return <div className="filters">{columnDataBlock(tableData)}</div>;
 }
 
 export default Filter;

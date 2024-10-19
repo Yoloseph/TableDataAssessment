@@ -59,15 +59,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Table Data</h1>
-      <p>Filtering area</p>
+      <h1>Table Assessment</h1>
       {tableData && (
         <Filter
           tableData={tableData}
           handleChange={(data) => handleFilter(data)}
         />
       )}
-      <p>Table area</p>
       {userData && tableData && (
         <Table userData={userData} tableData={tableData} />
       )}

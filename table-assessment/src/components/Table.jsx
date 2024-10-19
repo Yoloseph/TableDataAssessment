@@ -2,11 +2,17 @@ import { useState } from "react";
 import "./Table.css";
 
 function Table({ userData, tableData }) {
+  const [useZebraStyling, setUseZebraStyling] = useState(true);
+
   const getHeaders = (data) => {
     let header = [];
     if (data) {
       Object.keys(data).forEach((element) => {
-        header.push(<th>{element}</th>);
+        header.push(
+          <th className={useZebraStyling ? "header_zebra" : "header"}>
+            {element}
+          </th>
+        );
       });
     }
     return <>{header}</>;
@@ -18,7 +24,18 @@ function Table({ userData, tableData }) {
     if (data) {
       data.forEach((element) => {
         row.push(
-          <tr data-row-level={level}>
+          <tr
+            className={
+              level % 2 === 0
+                ? useZebraStyling
+                  ? "even_zebra"
+                  : "even"
+                : useZebraStyling
+                ? "odd_zebra"
+                : "odd"
+            }
+            data-row-level={level}
+          >
             {Object.values(element).map((value, index) => (
               <td key={index}>{value}</td>
             ))}
@@ -30,9 +47,15 @@ function Table({ userData, tableData }) {
     return row;
   };
 
+  const handleStyleChange = () => {
+    setUseZebraStyling(!useZebraStyling);
+  };
+
   return (
     <div>
-      <h1>Table </h1>
+      <button className="btn" onClick={() => handleStyleChange()}>
+        Change table style
+      </button>
       <table id="data-table">
         <thead>
           <tr>{getHeaders(tableData)}</tr>

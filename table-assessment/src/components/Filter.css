@@ -29,3 +29,7 @@ select:focus {
   border-color: #3867d5;
   box-shadow: 0 0 3px rgba(119, 119, 119, 0.3);
 }
+
+.filters {
+  display: flex;
+}
