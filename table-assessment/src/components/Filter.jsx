@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import "./Filter.css";
 
 function Filter({ tableData, handleChange }) {
-  console.log(tableData);
-  const [selectedColumn, setSelectedColumn] = useState("");
   const [selectedPairs, setSelectedPairs] = useState([]);
 
   useEffect(() => {
@@ -22,7 +20,6 @@ function Filter({ tableData, handleChange }) {
           }
           updatedPairs.push({ key, value });
         }
-
         return updatedPairs;
       });
     } else {
@@ -32,11 +29,9 @@ function Filter({ tableData, handleChange }) {
 
   const columnDataBlock = (data) => {
     const selects = [];
-
     Object.keys(data).forEach((key) => {
       let options = [];
       options.push(<option value="" key="blank-option"></option>);
-
       data[key].forEach((value) => {
         options.push(
           <option value={value} key={value}>
@@ -44,7 +39,6 @@ function Filter({ tableData, handleChange }) {
           </option>
         );
       });
-
       selects.push(
         <div className="dropdown">
           <p>{key}</p>
@@ -58,7 +52,6 @@ function Filter({ tableData, handleChange }) {
         </div>
       );
     });
-
     return selects;
   };
 

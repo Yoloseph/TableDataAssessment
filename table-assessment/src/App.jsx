@@ -6,6 +6,8 @@ import axios from "axios";
 
 function App() {
   const [tableData, setTableData] = useState([]);
+  const [tableDataDefault, setTableDataDefault] = useState([]);
+
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -15,6 +17,7 @@ function App() {
     ])
       .then(([tableResponse, userResponse]) => {
         setTableData(tableResponse.data.header);
+        setTableDataDefault(userResponse.data);
         setUserData(userResponse.data);
       })
       .catch((error) => {
@@ -24,9 +27,34 @@ function App() {
 
   const handleFilter = (data) => {
     if (data.length >= 2) {
+      setUserData(handleTableDataFilter(data, tableDataDefault));
     } else {
+      setUserData(tableDataDefault);
     }
-    console.log("recieved data =>", data);
+  };
+
+  const handleTableDataFilter = (filterData, tableData) => {
+    let filteredResults = [];
+    tableData.forEach((item) => {
+      let shouldInclude = true;
+      filterData.forEach((filter) => {
+        if (
+          filter.value === "All Articles" ||
+          filter.value === "Europe" ||
+          filter.value === "All Entities"
+        ) {
+          return;
+        }
+        if (item[filter.key] !== filter.value) {
+          shouldInclude = false;
+        }
+      });
+      if (shouldInclude) {
+        filteredResults.push(item);
+      }
+    });
+
+    return filteredResults; // Return the array of filtered results
   };
 
   return (
