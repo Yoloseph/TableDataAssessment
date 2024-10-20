@@ -3,6 +3,7 @@ import "./Table.css";
 
 function Table({ userData, tableData }) {
   const [useZebraStyling, setUseZebraStyling] = useState(true);
+  const [showHidden, setShowHidden] = useState(false);
 
   const getHeaders = (data) => {
     let header = [];
@@ -16,6 +17,11 @@ function Table({ userData, tableData }) {
       });
     }
     return <>{header}</>;
+  };
+
+  const handleShowHidden = (key) => {
+    console.log(key);
+    setShowHidden(!showHidden);
   };
 
   const getData = (data) => {
@@ -36,11 +42,37 @@ function Table({ userData, tableData }) {
             }
             data-row-level={level}
           >
-            {Object.values(element).map((value, index) => (
-              <td key={index}>{value}</td>
-            ))}
+            {Object.keys(element)
+              .filter((key) => key !== "children")
+              .map((key, index) => (
+                <td key={index}>
+                  {element[key]}
+                  {element[key] === "Europe" ||
+                  element[key] === "All Articles" ||
+                  element[key] === "All Entities" ? (
+                    <a
+                      className={showHidden ? "minus-icon " : "plus-icon"}
+                      onClick={() => handleShowHidden(key)}
+                    ></a>
+                  ) : null}
+                </td>
+              ))}
           </tr>
         );
+        if (element.children.length !== 0) {
+          element.children.forEach((element2) => {
+            row.push(
+              <tr
+                className={showHidden ? "hiddenRow " : "hiddenRow hidden"}
+                data-row-level={level}
+              >
+                {Object.values(element2).map((value, index) => (
+                  <td key={index}>{value}</td>
+                ))}
+              </tr>
+            );
+          });
+        }
         level++;
       });
     }
