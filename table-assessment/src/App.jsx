@@ -25,30 +25,34 @@ function App() {
       });
   }, []);
 
-  const handleFilter = (data) => {
-    if (data.length >= 2) {
-      setUserData(handleTableDataFilter(data, tableDataDefault));
-    } else {
-      setUserData(tableDataDefault);
-    }
+  const handleFilter = (column, value) => {
+    console.log("handleFilter");
+    setUserData(handleTableDataFilter(column, value, tableDataDefault));
   };
 
-  const handleTableDataFilter = (filterData, tableData) => {
+  const handleTableDataFilter = (column, value, tableData) => {
     let filteredResults = [];
     tableData.forEach((item) => {
       let shouldInclude = true;
-      filterData.forEach((filter) => {
-        if (
-          filter.value === "All Articles" ||
-          filter.value === "Europe" ||
-          filter.value === "All Entities"
-        ) {
-          return;
-        }
-        if (item[filter.key] !== filter.value) {
-          shouldInclude = false;
-        }
-      });
+      console.log(value === "");
+      // if (
+      //   value === "All Articles" ||
+      //   value === "Europe" ||
+      //   value === "All Entities" ||
+      //   value === ""
+      // ) {
+      //   filteredResults.push(item);
+      // }
+
+      if (
+        item[column] !== value &&
+        value !== "All Articles" &&
+        value !== "Europe" &&
+        value !== "All Entities" &&
+        value !== ""
+      ) {
+        shouldInclude = false;
+      }
       if (shouldInclude) {
         filteredResults.push(item);
       }
@@ -63,7 +67,7 @@ function App() {
       {tableData && (
         <Filter
           tableData={tableData}
-          handleChange={(data) => handleFilter(data)}
+          handleChange={(column, value) => handleFilter(column, value)}
         />
       )}
       {userData && tableData && (
