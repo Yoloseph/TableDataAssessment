@@ -27,10 +27,10 @@ function App() {
 
   const handleFilter = (column, value) => {
     console.log("handleFilter");
-    setUserData(handleTableDataFilter(column, value, tableDataDefault));
+    setUserData(filterChanged(column, value, tableDataDefault));
   };
 
-  const handleTableDataFilter = (column, value, tableData) => {
+  const filterChanged = (column, value, tableData) => {
     let filteredResults = [];
     tableData.forEach((item) => {
       let shouldInclude = true;
