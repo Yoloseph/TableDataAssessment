@@ -2,7 +2,7 @@
   "header": {
     "article": ["All Articles", "Bikes", "Motorbikes"],
     "region": ["Europe", "Great Britain", "Germany"],
-    "legalEntitie": ["11", "12", "13", "All Entities"],
+    "legalEntity": ["11", "12", "13", "All Entities"],
     "version": ["Actual", "Budget"],
     "currency": ["LC", "USD", "EUR"],
     "measure": ["Units", "Unit Price", "Gross Revenue"]

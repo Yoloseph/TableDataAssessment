@@ -3,7 +3,7 @@ import "./Table.css";
 
 function Table({ userData, tableData }) {
   const [useZebraStyling, setUseZebraStyling] = useState(true);
-  const [showHidden, setShowHidden] = useState(false);
+  const [rowsList, setRowsList] = useState({});
 
   const getHeaders = (data) => {
     let header = [];
@@ -19,18 +19,22 @@ function Table({ userData, tableData }) {
     return <>{header}</>;
   };
 
-  const handleShowHidden = (key) => {
-    console.log(key);
-    setShowHidden(!showHidden);
+  const handleShowHidden = (rowKey) => {
+    setRowsList((prev) => ({
+      ...prev,
+      [rowKey]: !prev[rowKey],
+    }));
   };
 
   const getData = (data) => {
     let row = [];
     let level = 1;
     if (data) {
-      data.forEach((element) => {
+      data.forEach((element, parentIndex) => {
+        const rowKey = `parent-${parentIndex}`;
         row.push(
           <tr
+            key={rowKey}
             className={
               level % 2 === 0
                 ? useZebraStyling
@@ -51,19 +55,20 @@ function Table({ userData, tableData }) {
                   element[key] === "All Articles" ||
                   element[key] === "All Entities" ? (
                     <a
-                      className={showHidden ? "minus-icon " : "plus-icon"}
-                      onClick={() => handleShowHidden(key)}
+                      className={rowsList[rowKey] ? "minus-icon" : "plus-icon"}
+                      onClick={() => handleShowHidden(rowKey)}
                     ></a>
                   ) : null}
                 </td>
               ))}
           </tr>
         );
-        if (element.children.length !== 0) {
-          element.children.forEach((element2) => {
+        if (element.children && element.children.length !== 0) {
+          element.children.forEach((element2, childIndex) => {
             row.push(
               <tr
-                className={showHidden ? "hiddenRow " : "hiddenRow hidden"}
+                key={`${rowKey}-child-${childIndex}`}
+                className={rowsList[rowKey] ? "hiddenRow" : "hiddenRow hidden"}
                 data-row-level={level}
               >
                 {Object.values(element2).map((value, index) => (

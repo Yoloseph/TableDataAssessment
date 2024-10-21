@@ -34,16 +34,6 @@ function App() {
     let filteredResults = [];
     tableData.forEach((item) => {
       let shouldInclude = true;
-      console.log(value === "");
-      // if (
-      //   value === "All Articles" ||
-      //   value === "Europe" ||
-      //   value === "All Entities" ||
-      //   value === ""
-      // ) {
-      //   filteredResults.push(item);
-      // }
-
       if (
         item[column] !== value &&
         value !== "All Articles" &&

@@ -14,7 +14,7 @@ function Filter({ tableData, handleChange }) {
 
   const columnDataBlock = (data) => {
     let option = [];
-
+    option.push(<option key="default" value=""></option>);
     Object.keys(data).forEach((element) => {
       option.push(<option value={element}>{element}</option>);
     });
@@ -27,11 +27,7 @@ function Filter({ tableData, handleChange }) {
 
   const valuesDataBlock = (data) => {
     let option = [];
-    option.push(
-      <option key="default" value="">
-        {" "}
-      </option>
-    );
+    option.push(<option key="default" value=""></option>);
     if (data && selectedColumn) {
       Object.keys(data).forEach((element) => {
         if (selectedColumn === element) {
