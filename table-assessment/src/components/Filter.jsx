@@ -55,7 +55,6 @@ function Filter({ tableData, handleChange }) {
 
   return (
     <div>
-      <h1>Filter </h1>
       <p>Column</p>
       {columnDataBlock(tableData)}
       <p>Value</p>
