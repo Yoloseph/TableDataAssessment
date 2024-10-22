@@ -29,6 +29,55 @@
     ]
   },
   {
+    "article": "Bikes",
+    "region": "Japan",
+    "legalEntity": "12",
+    "version": "Budget",
+    "currency": "EUR",
+    "measure": "Gross Revenue",
+    "value": 152367,
+    "children": []
+  },
+  {
+    "article": "Bikes",
+    "region": "Korea",
+    "legalEntity": "12",
+    "version": "Budget",
+    "currency": "EUR",
+    "measure": "Gross Revenue",
+    "value": 152367,
+    "children": []
+  },
+  {
+    "article": "Motorbikes",
+    "region": "Asia",
+    "legalEntity": "11",
+    "version": "Actual",
+    "currency": "LC",
+    "measure": "Units",
+    "value": 276521,
+    "children": [
+      {
+        "article": "Motorbikes",
+        "region": "Japan",
+        "legalEntity": "11",
+        "version": "Actual",
+        "currency": "LC",
+        "measure": "Units",
+        "value": 276521
+      },
+      {
+        "article": "Bikes",
+        "region": "Korea",
+        "legalEntity": "11",
+        "version": "Actual",
+        "currency": "LC",
+        "measure": "Units",
+        "value": 276521
+      }
+    ]
+  },
+  {
     "article": "All Articles",
     "region": "Great Britain",
     "legalEntity": "12",
@@ -66,8 +115,7 @@
     "measure": "Unit Price",
     "value": 152367,
     "children": []
-  }
-  ,
+  },
   {
     "article": "Motorbikes",
     "region": "Germany",
@@ -76,32 +124,34 @@
     "currency": "USD",
     "measure": "Unit Price",
     "value": 152367,
-    "children": [{
-      "article": "Motorbikes",
-      "region": "Germany",
-      "legalEntity": "11",
-      "version": "Actual",
-      "currency": "LC",
-      "measure": "Units",
-      "value": 276521
-    },
-    {
-      "article": "Bikes",
-      "region": "Germany",
-      "legalEntity": "12",
-      "version": "Actual",
-      "currency": "LC",
-      "measure": "Units",
-      "value": 276521
-    },
-    {
-      "article": "Bikes",
-      "region": "Germany",
-      "legalEntity": "13",
-      "version": "Actual",
-      "currency": "LC",
-      "measure": "Units",
-      "value": 276521
-    }]
+    "children": [
+      {
+        "article": "Motorbikes",
+        "region": "Germany",
+        "legalEntity": "11",
+        "version": "Actual",
+        "currency": "LC",
+        "measure": "Units",
+        "value": 276521
+      },
+      {
+        "article": "Bikes",
+        "region": "Germany",
+        "legalEntity": "12",
+        "version": "Actual",
+        "currency": "LC",
+        "measure": "Units",
+        "value": 276521
+      },
+      {
+        "article": "Bikes",
+        "region": "Germany",
+        "legalEntity": "13",
+        "version": "Actual",
+        "currency": "LC",
+        "measure": "Units",
+        "value": 276521
+      }
+    ]
   }
 ]

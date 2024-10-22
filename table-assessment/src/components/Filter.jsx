@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import "./Filter.css";
+
 
 function Filter({ tableData, handleChange }) {
   const [selectedColumn, setSelectedColumn] = useState("");

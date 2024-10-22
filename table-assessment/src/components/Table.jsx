@@ -52,6 +52,7 @@ function Table({ userData, tableData }) {
                 <td key={index}>
                   {element[key]}
                   {element[key] === "Europe" ||
+                  element[key] === "Asia" ||
                   element[key] === "All Articles" ||
                   element[key] === "All Entities" ? (
                     <a

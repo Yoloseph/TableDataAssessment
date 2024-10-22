@@ -26,7 +26,6 @@ function App() {
   }, []);
 
   const handleFilter = (column, value) => {
-    console.log("handleFilter");
     setUserData(filterChanged(column, value, tableDataDefault));
   };
 
@@ -37,12 +36,21 @@ function App() {
       if (
         item[column] !== value &&
         value !== "All Articles" &&
-        value !== "Europe" &&
         value !== "All Entities" &&
         value !== ""
       ) {
-        shouldInclude = false;
+        if (
+          (value === "Europe" &&
+            (item[column] === "Great Britain" || item[column] === "Germany")) ||
+          (value === "Asia" &&
+            (item[column] === "Japan" || item[column] === "Korea"))
+        ) {
+          shouldInclude = true;
+        } else {
+          shouldInclude = false;
+        }
       }
+
       if (shouldInclude) {
         filteredResults.push(item);
       }

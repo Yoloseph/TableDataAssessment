@@ -1,7 +1,7 @@
 {
   "header": {
     "article": ["All Articles", "Bikes", "Motorbikes"],
-    "region": ["Europe", "Great Britain", "Germany"],
+    "region": ["Europe", "Asia", "Japan", "Korea", "Great Britain", "Germany"],
     "legalEntity": ["11", "12", "13", "All Entities"],
     "version": ["Actual", "Budget"],
     "currency": ["LC", "USD", "EUR"],
